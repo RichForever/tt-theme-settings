@@ -8,6 +8,7 @@ import {
     CardFooter,
     Notice,
     TabPanel,
+    Icon
 } from '@wordpress/components';
 
 import {useThemeSettings} from "./hooks/useThemeSettings";
@@ -28,17 +29,17 @@ const OptionsPage = () => {
     return (
         <>
             {notice.isVisible && (
-                <>
+                <div style={{ marginBottom: ".75rem", marginTop: ".75rem" }}>
                     <Notice status={notice.type} onDismiss={dismissNotice}>
                         {notice.message}
                     </Notice>
-                </>
+                </div>
             )
             }
 
             <Card isRounded={false}>
                 <CardHeader>
-                    <Heading level={1}>{__('Theme Settings', 'timbertail')}</Heading>
+                    <Heading level={1} style={{fontWeight: 600}}>{__('Theme Settings', 'timbertail')}</Heading>
                 </CardHeader>
                 <CardBody>
                     <TabPanel
