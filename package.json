@@ -1,0 +1,21 @@
+{
+  "name": "timbertail-theme-settings",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@codemirror/lang-html": "^6.4.9",
+    "@uiw/react-codemirror": "^4.23.7",
+    "@wordpress/scripts": "^30.6.0"
+  },
+  "dependencies": {
+    "@wordpress/components": "^29.0.0"
+  }
+}
