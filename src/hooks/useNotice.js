@@ -28,11 +28,7 @@ export const useNotice = () => {
     useEffect(() => {
         if (notice.isVisible) {
             const timer = setTimeout(() => {
-                setNotice({
-                    isVisible: false,
-                    type: '',
-                    message: ''
-                });
+                dismissNotice()
             }, 4000);
 
             return () => clearTimeout(timer);
