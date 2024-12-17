@@ -13,8 +13,9 @@ import {
 
 import {FormProvider, useForm} from 'react-hook-form';
 import {useSettingsManager } from "./hooks/useSettingsManager";
-import ContentContainer from "./components/ContentContainer";
+import ContentContainer from "./components/layout/ContentContainer";
 import ScriptsSettingsPanel from "./components/ScriptsSettingsPanel";
+import SocialSettingsPanel from "./components/SocialSettingsPanel";
 
 const ThemeSettingsPage = () => {
     const {
@@ -38,6 +39,7 @@ const ThemeSettingsPage = () => {
     }, [settings]);
 
     const handleSubmitForm = async (data) => {
+        console.log(data)
         await submitSettings(data);
     }
 
@@ -45,18 +47,20 @@ const ThemeSettingsPage = () => {
         return <p>{__('Loading...', 'timbertail')}</p>;
     }
 
-    // Dynamically create tabs based on the settings object
-    const tabs = Object.keys(settings).map((key) => {
-        const tabTitle = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize the first letter
-        const PanelComponent = require(`./components/${tabTitle}Panel`).default;
-
-        return {
-            name: key,
-            title: tabTitle,
+    const tabs = [
+        {
+            name: 'scriptsSettings',
+            title: 'Scripts',
             className: 'tab',
-            component: <PanelComponent />,
-        };
-    });
+            component: <ScriptsSettingsPanel />,
+        },
+        {
+            name: 'socialSettings',
+            title: 'Social',
+            className: 'tab',
+            component: <SocialSettingsPanel />,
+        }
+    ]
 
     return (
         <>

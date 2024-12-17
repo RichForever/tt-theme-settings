@@ -9,7 +9,7 @@ import {
 import CodeMirror from '@uiw/react-codemirror';
 import {html} from '@codemirror/lang-html'
 
-const ScriptInputSection = ({namePrefix, label, helpText}) => {
+const ScriptFieldGroup = ({namePrefix, label, helpText}) => {
     const { control } = useFormContext();
     return (
         <VStack width="100%" spacing={4}>
@@ -18,7 +18,7 @@ const ScriptInputSection = ({namePrefix, label, helpText}) => {
                 <Text color="#757575">{helpText}</Text>
             </div>
             <Controller
-                name={`scriptsSettings.${namePrefix}.content`}
+                name={`scriptsSettings.${namePrefix}.content`}  // name is used as a key name in the data object; the "." means that's the object
                 control={control}
                 render={({ field }) => (
                     <CodeMirror
@@ -35,13 +35,13 @@ const ScriptInputSection = ({namePrefix, label, helpText}) => {
                 )}
             />
             <Controller
-                name={`scriptsSettings.${namePrefix}.isActive`}
+                name={`scriptsSettings.${namePrefix}.isActive`} // name is used as a key name in the data object; the "." means that's the object
                 control={control}
                 render={({ field }) => (
                     <ToggleControl
+                        {...field}
                         label={__('Activate scripts', 'timbertail')}
                         checked={field.value}
-                        onChange={field.onChange}
                         __nextHasNoMarginBottom
                     />
                 )}
@@ -50,4 +50,4 @@ const ScriptInputSection = ({namePrefix, label, helpText}) => {
     )
 };
 
-export default ScriptInputSection
+export default ScriptFieldGroup
