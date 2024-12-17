@@ -1,8 +1,8 @@
 import {createRoot} from 'react-dom/client';
-import OptionsPage from "./OptionsPage";
+import ThemeSettingsPage from "./ThemeSettingsPage";
 
 const App = () => {
-    return <OptionsPage/>
+    return <ThemeSettingsPage />
 };
 
 const rootElement = document.getElementById('tt-theme-settings');

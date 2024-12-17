@@ -8,7 +8,7 @@ export const useNotice = () => {
         message: ''
     })
 
-    const updateNotice = (isVisible, type, message) => {
+    const showNotice = (isVisible, type, message) => {
         setNotice({
             isVisible,
             type,
@@ -35,6 +35,6 @@ export const useNotice = () => {
         }
     }, [notice.isVisible]);
 
-    return {notice, updateNotice, dismissNotice}
+    return {notice, showNotice, dismissNotice}
 
 }
