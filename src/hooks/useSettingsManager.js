@@ -1,6 +1,8 @@
-import {useState, useEffect} from 'react';
-import {useNotice} from "./useNotice";
+import { useEffect, useState } from 'react';
+
 import apiFetch from '@wordpress/api-fetch';
+
+import { useNotice } from "./useNotice";
 
 export const useSettingsManager = () => {
     const {notice, showNotice, dismissNotice} = useNotice();
