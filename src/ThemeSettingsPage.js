@@ -1,21 +1,14 @@
-import {useEffect} from 'react';
-import {__} from '@wordpress/i18n';
-import {
-    __experimentalHeading as Heading,
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Notice,
-    TabPanel,
-} from '@wordpress/components';
+import { useEffect } from 'react';
 
-import {FormProvider, useForm} from 'react-hook-form';
-import {useSettingsManager } from "./hooks/useSettingsManager";
+import { FormProvider, useForm } from 'react-hook-form';
+
+import { __ } from '@wordpress/i18n';
+import { Button, Card, CardBody, CardFooter, CardHeader, __experimentalHeading as Heading, Notice, TabPanel } from '@wordpress/components';
+
+import { useSettingsManager } from "./hooks/useSettingsManager";
 import ContentContainer from "./components/layout/ContentContainer";
-import ScriptsSettingsPanel from "./components/ScriptsSettingsPanel";
-import SocialSettingsPanel from "./components/SocialSettingsPanel";
+import ScriptsPanel from "./components/settings/scripts/ScriptsPanel";
+import SocialMediaPanel from "./components/settings/social/SocialMediaPanel";
 
 const ThemeSettingsPage = () => {
     const {
@@ -52,13 +45,13 @@ const ThemeSettingsPage = () => {
             name: 'scriptsSettings',
             title: 'Scripts',
             className: 'tab',
-            component: <ScriptsSettingsPanel />,
+            component: <ScriptsPanel />,
         },
         {
-            name: 'socialSettings',
-            title: 'Social',
+            name: 'socialMediaSettings',
+            title: 'Social Media',
             className: 'tab',
-            component: <SocialSettingsPanel />,
+            component: <SocialMediaPanel />,
         }
     ]
 
