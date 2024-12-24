@@ -9,11 +9,11 @@ import {
   __experimentalHStack as HStack,
   __experimentalConfirmDialog as ConfirmDialog,
   SnackbarList,
-  Snackbar,
 } from "@wordpress/components";
 
 import SocialMediaItem from "./SocialMediaItem";
 import FormSectionHeading from "../../common/FormSectionHeading";
+import styles from "./SocialMediaPanel.module.css";
 
 const SocialMediaPanel = () => {
   const { control, watch } = useFormContext();
@@ -34,6 +34,19 @@ const SocialMediaPanel = () => {
     remove();
     setLastAddedIndex(null);
     setIsConfirmDialogOpen(false);
+
+    const noticeId = Date.now();
+    setNotices((prev) => [
+      ...prev,
+      {
+        id: noticeId,
+        content: __("Items removed successfully", "timbertail"),
+      },
+    ]);
+
+    setTimeout(() => {
+      setNotices((prev) => prev.filter((notice) => notice.id !== noticeId));
+    }, 1000);
   };
 
   const handleShowConfirmDialog = () => {
@@ -56,9 +69,9 @@ const SocialMediaPanel = () => {
       },
     ]);
 
-    // setTimeout(() => {
-    //     setNotices(prev => prev.filter(notice => notice.id !== noticeId));
-    // }, 1500);
+    setTimeout(() => {
+      setNotices((prev) => prev.filter((notice) => notice.id !== noticeId));
+    }, 1000);
   };
 
   const handleConfirm = () => {
@@ -70,63 +83,68 @@ const SocialMediaPanel = () => {
   };
 
   return (
-    <VStack spacing={4}>
-      <FormSectionHeading
-        label={__("Social Media", "timbertail")}
-        helpText={__("Add your social media platforms", "timbertail")}
-      />
-      {fields.length === 0 ? (
-        <p>
-          {__(
-            "No social media links added yet. Click the button below to add one.",
-            "timbertail",
-          )}
-        </p>
-      ) : (
-        fields.map((field, index) => (
-          <SocialMediaItem
-            key={field.id}
-            index={index}
-            name={"socialMediaSettings"}
-            handleRemove={() => handleRemoveItem(index)}
-            isNew={index === lastAddedIndex}
-          />
-        ))
-      )}
+    <>
+      <VStack spacing={4}>
+        <FormSectionHeading
+          label={__("Social Media", "timbertail")}
+          helpText={__("Add your social media platforms", "timbertail")}
+        />
+        {fields.length === 0 ? (
+          <p>
+            {__(
+              "No social media links added yet. Click the button below to add one.",
+              "timbertail",
+            )}
+          </p>
+        ) : (
+          <div>
+            {fields.map((field, index) => (
+              <SocialMediaItem
+                key={field.id}
+                index={index}
+                name={"socialMediaSettings"}
+                handleRemove={() => handleRemoveItem(index)}
+                isNew={index === lastAddedIndex}
+              />
+            ))}
+          </div>
+        )}
 
-      <SnackbarList notices={notices} />
-
-      <ConfirmDialog
-        isOpen={isConfirmDialogOpen}
-        onConfirm={handleConfirm}
-        onCancel={handleCancel}
-        cancelButtonText={__("No, thanks", "timbertail")}
-        confirmButtonText={__("Yes, please!", "timbertail")}
-      >
-        {__("Are you sure you want to remove all items?", "timbertail")}
-      </ConfirmDialog>
-
-      <HStack justify="flex-start">
-        <Button
-          variant="secondary"
-          onClick={handleAddNew}
-          style={{ width: "fit-content" }}
+        <ConfirmDialog
+          isOpen={isConfirmDialogOpen}
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+          cancelButtonText={__("No, thanks", "timbertail")}
+          confirmButtonText={__("Yes, please!", "timbertail")}
         >
-          {__("Add item", "timbertail")}
-        </Button>
+          {__("Are you sure you want to remove all items?", "timbertail")}
+        </ConfirmDialog>
 
-        {fields.length > 0 && (
+        <HStack justify="flex-start">
           <Button
             variant="secondary"
-            isDestructive
-            onClick={handleShowConfirmDialog}
+            onClick={handleAddNew}
             style={{ width: "fit-content" }}
           >
-            {__("Remove all items", "timbertail")}
+            {__("Add item", "timbertail")}
           </Button>
-        )}
-      </HStack>
-    </VStack>
+
+          {fields.length > 0 && (
+            <Button
+              variant="secondary"
+              isDestructive
+              onClick={handleShowConfirmDialog}
+              style={{ width: "fit-content" }}
+            >
+              {__("Remove all items", "timbertail")}
+            </Button>
+          )}
+        </HStack>
+        <div className={styles["snackbar-list-container"]}>
+          <SnackbarList notices={notices} />
+        </div>
+      </VStack>
+    </>
   );
 };
 
