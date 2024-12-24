@@ -1,10 +1,6 @@
-import styles from './ContentContainer.module.css'
+import styles from "./ContentContainer.module.css";
 
-const ContentContainer = ({children}) => {
-    return (
-        <div className={styles['panel__body-wrapper']}>
-            {children}
-        </div>
-    )
-}
+const ContentContainer = ({ children }) => {
+  return <div className={styles["panel__body-wrapper"]}>{children}</div>;
+};
 export default ContentContainer;
