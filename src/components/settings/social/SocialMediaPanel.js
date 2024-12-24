@@ -141,7 +141,7 @@ const SocialMediaPanel = () => {
           )}
         </HStack>
         <div className={styles["snackbar-list-container"]}>
-          <SnackbarList notices={notices} />
+          <SnackbarList notices={notices} onRemove={() => {}} />
         </div>
       </VStack>
     </>
