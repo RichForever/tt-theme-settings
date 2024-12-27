@@ -12,9 +12,8 @@ import {
 } from '@wordpress/components';
 
 import SocialMediaItem from './SocialMediaItem';
-import FormSectionHeading from '../../common/FormSectionHeading';
-import Section from '../../layout/Section';
-import styles from '../../../styles/SocialMediaPanel.module.scss';
+import Section from 'components/layout/Section';
+import styles from 'styles/SocialMediaPanel.module.scss';
 
 const SocialMediaPanel = () => {
   const { control, watch } = useFormContext();

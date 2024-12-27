@@ -1,7 +1,15 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
+    "target": "es6",
     "module": "commonjs",
+	"jsx": "react-jsx",
     "checkJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "styles/*": ["src/styles/*"],
+      "components/*": ["src/components/*"]
+    }
   },
+  "include": ["src/**/*", "@types/**/*"],
+  "exclude": ["node_modules", "build"]
 }

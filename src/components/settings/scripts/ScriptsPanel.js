@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 
-import Section from '../../layout/Section';
+import Section from 'components/layout/Section';
 import ScriptField from './ScriptField';
 
 const ScriptsPanel = () => {

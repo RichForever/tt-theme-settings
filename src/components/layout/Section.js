@@ -1,8 +1,8 @@
 import { __experimentalVStack as VStack } from '@wordpress/components';
 
-import FormSectionHeading from '../common/FormSectionHeading';
+import FormSectionHeading from 'components/common/FormSectionHeading';
 
-import styles from '../../styles/Section.module.scss';
+import styles from 'styles/Section.module.scss';
 
 const Section = ({ sectionTitle, sectionDescription, children }) => {
   return (
