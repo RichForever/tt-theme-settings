@@ -1,7 +1,7 @@
 {
-    "compilerOptions": {
-      "jsx": "react-jsx",
-      "module": "commonjs",
-      "checkJs": true
-    }
-  }
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "commonjs",
+    "checkJs": true,
+  },
+}

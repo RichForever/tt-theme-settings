@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm } from 'react-hook-form';
 
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 import {
   Button,
   Card,
@@ -12,26 +12,20 @@ import {
   __experimentalHeading as Heading,
   Notice,
   Spinner,
-  TabPanel,
-} from "@wordpress/components";
+  TabPanel
+} from '@wordpress/components';
 
-import { useSettingsManager } from "./hooks/useSettingsManager";
-import ContentContainer from "./components/layout/ContentContainer";
-import ScriptsPanel from "./components/settings/scripts/ScriptsPanel";
-import SocialMediaPanel from "./components/settings/social/SocialMediaPanel";
+import { useSettingsManager } from './hooks/useSettingsManager';
+import ScriptsPanel from './components/settings/scripts/ScriptsPanel';
+import SocialMediaPanel from './components/settings/social/SocialMediaPanel';
 
 const ThemeSettingsPage = () => {
-  const {
-    dismissNotice,
-    notice,
-    submitSettings,
-    settings,
-    isFetchingSettings,
-  } = useSettingsManager();
+  const { dismissNotice, notice, submitSettings, settings, isFetchingSettings } =
+    useSettingsManager();
 
   // Initialize React Hook Form
   const formMethods = useForm({
-    defaultValues: settings, // Set default form values to settings state
+    defaultValues: settings // Set default form values to settings state
   });
 
   // Reset form values when the settings are loaded
@@ -48,23 +42,23 @@ const ThemeSettingsPage = () => {
 
   const tabs = [
     {
-      name: "scriptsSettings",
-      title: "Scripts",
-      className: "tab",
-      component: <ScriptsPanel />,
+      name: 'scriptsSettings',
+      title: 'Scripts',
+      className: 'tab',
+      component: <ScriptsPanel />
     },
     {
-      name: "socialMediaSettings",
-      title: "Social Media",
-      className: "tab",
-      component: <SocialMediaPanel />,
-    },
+      name: 'socialMediaSettings',
+      title: 'Social Media',
+      className: 'tab',
+      component: <SocialMediaPanel />
+    }
   ];
 
   return (
     <>
       {notice.isVisible && (
-        <div style={{ marginBottom: ".75rem", marginTop: ".75rem" }}>
+        <div style={{ marginBottom: '.75rem', marginTop: '.75rem' }}>
           <Notice status={notice.type} onDismiss={dismissNotice}>
             {notice.message}
           </Notice>
@@ -76,31 +70,27 @@ const ThemeSettingsPage = () => {
           <Card isRounded={false}>
             <CardHeader>
               <Heading level={1} style={{ fontWeight: 600 }}>
-                {__("Theme Settings", "timbertail")}
+                {__('Theme Settings', 'timbertail')}
               </Heading>
             </CardHeader>
             <CardBody>
               {isFetchingSettings ? (
                 <Spinner />
               ) : (
-                <TabPanel tabs={tabs}>
-                  {(tab) => (
-                    <ContentContainer>{tab.component}</ContentContainer>
-                  )}
-                </TabPanel>
+                <TabPanel tabs={tabs}>{(tab) => tab.component}</TabPanel>
               )}
             </CardBody>
             <CardFooter>
               <Button
                 type="submit"
                 variant="primary"
-                style={{ width: "fit-content" }}
+                style={{ width: 'fit-content' }}
                 isBusy={formMethods.formState.isSubmitting}
                 disabled={formMethods.formState.isSubmitting}
               >
                 {formMethods.formState.isSubmitting
-                  ? __("Saving...", "timbertail")
-                  : __("Save settings", "timbertail")}
+                  ? __('Saving...', 'timbertail')
+                  : __('Save settings', 'timbertail')}
               </Button>
             </CardFooter>
           </Card>

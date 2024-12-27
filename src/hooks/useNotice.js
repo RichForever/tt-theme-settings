@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 export const useNotice = () => {
   const [notice, setNotice] = useState({
     isVisible: false,
-    type: "",
-    message: "",
+    type: '',
+    message: ''
   });
 
   const showNotice = (isVisible, type, message) => {
     setNotice({
       isVisible,
       type,
-      message,
+      message
     });
   };
 
   const dismissNotice = () => {
     setNotice({
       isVisible: false,
-      type: "",
-      message: "",
+      type: '',
+      message: ''
     });
   };
 

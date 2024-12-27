@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import apiFetch from "@wordpress/api-fetch";
+import apiFetch from '@wordpress/api-fetch';
 
-import { useNotice } from "./useNotice";
+import { useNotice } from './useNotice';
 
 export const useSettingsManager = () => {
   const { notice, showNotice, dismissNotice } = useNotice();
@@ -12,11 +12,11 @@ export const useSettingsManager = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await apiFetch({ path: "tt/v1/settings" });
+        const response = await apiFetch({ path: 'tt/v1/settings' });
         setSettings(response);
       } catch (error) {
-        showNotice(true, "error", "Error fetching settings.");
-        console.error("Error fetching settings:", error);
+        showNotice(true, 'error', 'Error fetching settings.');
+        console.error('Error fetching settings:', error);
       } finally {
         setIsFetchingSettings(false);
       }
@@ -26,23 +26,23 @@ export const useSettingsManager = () => {
   const submitSettings = async (data) => {
     try {
       const response = await apiFetch({
-        path: "tt/v1/settings",
-        method: "POST",
+        path: 'tt/v1/settings',
+        method: 'POST',
         data: {
-          tt_theme_settings: data,
+          tt_theme_settings: data
         },
-        parse: false,
+        parse: false
       });
 
       const responseData = await response.json();
 
       if (response.ok) {
-        showNotice(true, "success", responseData.message);
+        showNotice(true, 'success', responseData.message);
       } else {
-        showNotice(true, "warning", responseData.message);
+        showNotice(true, 'warning', responseData.message);
       }
     } catch (error) {
-      showNotice(true, "error", "An unexpected error occurred.");
+      showNotice(true, 'error', 'An unexpected error occurred.');
     }
   };
 
@@ -51,6 +51,6 @@ export const useSettingsManager = () => {
     notice,
     submitSettings,
     settings,
-    isFetchingSettings,
+    isFetchingSettings
   };
 };

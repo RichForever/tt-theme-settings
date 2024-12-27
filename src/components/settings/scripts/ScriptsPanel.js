@@ -1,43 +1,36 @@
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
-import ScriptField from "./ScriptField";
+import Section from '../../layout/Section';
+import ScriptField from './ScriptField';
 
 const ScriptsPanel = () => {
   const sections = [
     {
-      namePrefix: "head",
-      label: __("Scripts in Header", "timbertail"),
-      helpText: __(
-        "These scripts will be printed in the <head> section",
-        "timbertail",
-      ),
+      namePrefix: 'head',
+      sectionTitle: __('Scripts in Header', 'timbertail'),
+      sectionDescription: __('These scripts will be printed in the <head> section', 'timbertail')
     },
     {
-      namePrefix: "body",
-      label: __("Scripts in Body", "timbertail"),
-      helpText: __(
-        "These scripts will be printed in the <body> section",
-        "timbertail",
-      ),
+      namePrefix: 'body',
+      sectionTitle: __('Scripts in Body', 'timbertail'),
+      sectionDescription: __('These scripts will be printed in the <body> section', 'timbertail')
     },
     {
-      namePrefix: "footer",
-      label: __("Scripts in Footer", "timbertail"),
-      helpText: __(
-        "These scripts will be printed in the <footer> section",
-        "timbertail",
-      ),
-    },
+      namePrefix: 'footer',
+      sectionTitle: __('Scripts in Footer', 'timbertail'),
+      sectionDescription: __('These scripts will be printed in the <footer> section', 'timbertail')
+    }
   ];
   return (
     <>
-      {sections.map(({ namePrefix, label, helpText }) => (
-        <ScriptField
+      {sections.map(({ namePrefix, sectionTitle, sectionDescription }) => (
+        <Section
           key={namePrefix}
-          namePrefix={namePrefix}
-          label={label}
-          helpText={helpText}
-        />
+          sectionTitle={sectionTitle}
+          sectionDescription={sectionDescription}
+        >
+          <ScriptField key={namePrefix} namePrefix={namePrefix} />
+        </Section>
       ))}
     </>
   );

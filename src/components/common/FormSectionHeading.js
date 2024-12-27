@@ -1,15 +1,15 @@
 import {
   __experimentalHeading as Heading,
-  __experimentalText as Text,
-} from "@wordpress/components";
+  __experimentalText as Text
+} from '@wordpress/components';
 
-const FormSectionHeading = ({ label, helpText }) => {
+const FormSectionHeading = ({ title, description }) => {
   return (
     <div>
-      <Heading level={4} weight="600">
-        {label}
+      <Heading level={5} weight="600">
+        {title}
       </Heading>
-      <Text color="#757575">{helpText}</Text>
+      <Text color="#757575">{description}</Text>
     </div>
   );
 };
