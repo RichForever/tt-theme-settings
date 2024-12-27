@@ -21,14 +21,15 @@ const ScriptsPanel = () => {
       sectionDescription: __('These scripts will be printed in the <footer> section', 'timbertail')
     }
   ];
-  
+
   return (
     <>
       {sections.map(({ fieldName, sectionTitle, sectionDescription }) => (
         <Section
           key={fieldName}
           sectionTitle={sectionTitle}
-          sectionDescription={sectionDescription}>
+          sectionDescription={sectionDescription}
+        >
           <ScriptField settingsGroup="scriptsSettings" fieldName={fieldName} />
         </Section>
       ))}

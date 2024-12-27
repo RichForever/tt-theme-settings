@@ -93,7 +93,8 @@ const ThemeSettingsPage = () => {
                 variant="primary"
                 style={{ width: 'fit-content' }}
                 isBusy={formMethods.formState.isSubmitting}
-                disabled={formMethods.formState.isSubmitting}>
+                disabled={formMethods.formState.isSubmitting}
+              >
                 {formMethods.formState.isSubmitting
                   ? __('Saving...', 'timbertail')
                   : __('Save settings', 'timbertail')}

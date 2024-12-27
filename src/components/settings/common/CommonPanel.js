@@ -58,7 +58,8 @@ const CommonPanel = () => {
         <Section
           key={fieldName}
           sectionTitle={sectionTitle}
-          sectionDescription={sectionDescription}>
+          sectionDescription={sectionDescription}
+        >
           <Component settingsGroup="commonSettings" fieldName={fieldName} />
         </Section>
       ))}

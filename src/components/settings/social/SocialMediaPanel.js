@@ -86,7 +86,8 @@ const SocialMediaPanel = () => {
   return (
     <Section
       sectionTitle={__('Social Media', 'timbertail')}
-      sectionDescription={__('Add your social media platforms', 'timbertail')}>
+      sectionDescription={__('Add your social media platforms', 'timbertail')}
+    >
       <VStack spacing={4}>
         {fields.length === 0 ? (
           <p>
@@ -114,7 +115,8 @@ const SocialMediaPanel = () => {
           onConfirm={handleConfirm}
           onCancel={handleCancel}
           cancelButtonText={__('No, thanks', 'timbertail')}
-          confirmButtonText={__('Yes, please!', 'timbertail')}>
+          confirmButtonText={__('Yes, please!', 'timbertail')}
+        >
           {__('Are you sure you want to remove all items?', 'timbertail')}
         </ConfirmDialog>
 
@@ -128,7 +130,8 @@ const SocialMediaPanel = () => {
               variant="secondary"
               isDestructive
               onClick={handleShowConfirmDialog}
-              style={{ width: 'fit-content' }}>
+              style={{ width: 'fit-content' }}
+            >
               {__('Remove all items', 'timbertail')}
             </Button>
           )}
