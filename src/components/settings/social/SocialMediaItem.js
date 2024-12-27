@@ -5,13 +5,13 @@ import { Button, Panel, PanelBody, PanelRow, TextControl } from '@wordpress/comp
 
 import styles from 'styles/SocialMediaPanel.module.scss';
 
-const SocialMediaItem = ({ index, name, handleRemove, isNew }) => {
+const SocialMediaItem = ({ index, settingsGroup, handleRemove, isNew }) => {
   const {
     control,
     watch,
     formState: { errors }
   } = useFormContext();
-  const platform = watch(`${name}.${index}.platform`);
+  const platform = watch(`${settingsGroup}.${index}.platform`);
   const title = platform || __('New Social Media', 'timbertail');
 
   return (
@@ -20,7 +20,7 @@ const SocialMediaItem = ({ index, name, handleRemove, isNew }) => {
         <div style={{ marginTop: '16px' }}>
           <PanelRow>
             <Controller
-              name={`${name}.${index}.platform`}
+              name={`${settingsGroup}.${index}.platform`}
               control={control}
               rules={{
                 required: {
@@ -34,9 +34,9 @@ const SocialMediaItem = ({ index, name, handleRemove, isNew }) => {
                     {...field}
                     label={__('Platform Name', 'timbertail')}
                     help={
-                      errors?.[name]?.[index]?.platform && (
+                      errors?.[settingsGroup]?.[index]?.platform && (
                         <span className={styles['error-message']}>
-                          {errors?.[name]?.[index]?.platform.message}
+                          {errors?.[settingsGroup]?.[index]?.platform.message}
                         </span>
                       )
                     }
@@ -48,7 +48,7 @@ const SocialMediaItem = ({ index, name, handleRemove, isNew }) => {
           </PanelRow>
           <PanelRow>
             <Controller
-              name={`${name}.${index}.url`}
+              name={`${settingsGroup}.${index}.url`}
               control={control}
               rules={{
                 required: {
@@ -62,9 +62,9 @@ const SocialMediaItem = ({ index, name, handleRemove, isNew }) => {
                     {...field}
                     label={__('URL', 'timbertail')}
                     help={
-                      errors?.[name]?.[index]?.url && (
+                      errors?.[settingsGroup]?.[index]?.url && (
                         <span className={styles['error-message']}>
-                          {errors?.[name]?.[index]?.url.message}
+                          {errors?.[settingsGroup]?.[index]?.url.message}
                         </span>
                       )
                     }
@@ -79,8 +79,7 @@ const SocialMediaItem = ({ index, name, handleRemove, isNew }) => {
               variant="primary"
               isDestructive
               onClick={handleRemove}
-              style={{ width: 'fit-content' }}
-            >
+              style={{ width: 'fit-content' }}>
               {__('Remove item', 'timbertail')}
             </Button>
           </PanelRow>

@@ -5,24 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class TT_Theme_Settings {
-
-	/**
-	 * Holds the single instance of the class.
-	 */
-	private static $instance = null;
-
-	public static function get_instance() {
-		if ( null === self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
-	private function __construct() {
+	public static function init() {
 		// Initialize subcomponents
 		new TT_Admin_Page();
 		new TT_Assets_Loader();
-		new TT_Scripts_Handler();
 		new TT_REST_API();
+		new TT_Settings();
+		new TT_Scripts_Handler();
+		new TT_Common_Settings_Handler();
 	}
 }

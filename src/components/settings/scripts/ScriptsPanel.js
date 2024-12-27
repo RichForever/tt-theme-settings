@@ -6,30 +6,30 @@ import ScriptField from './ScriptField';
 const ScriptsPanel = () => {
   const sections = [
     {
-      namePrefix: 'head',
+      fieldName: 'head',
       sectionTitle: __('Scripts in Header', 'timbertail'),
       sectionDescription: __('These scripts will be printed in the <head> section', 'timbertail')
     },
     {
-      namePrefix: 'body',
+      fieldName: 'body',
       sectionTitle: __('Scripts in Body', 'timbertail'),
       sectionDescription: __('These scripts will be printed in the <body> section', 'timbertail')
     },
     {
-      namePrefix: 'footer',
+      fieldName: 'footer',
       sectionTitle: __('Scripts in Footer', 'timbertail'),
       sectionDescription: __('These scripts will be printed in the <footer> section', 'timbertail')
     }
   ];
+  
   return (
     <>
-      {sections.map(({ namePrefix, sectionTitle, sectionDescription }) => (
+      {sections.map(({ fieldName, sectionTitle, sectionDescription }) => (
         <Section
-          key={namePrefix}
+          key={fieldName}
           sectionTitle={sectionTitle}
-          sectionDescription={sectionDescription}
-        >
-          <ScriptField key={namePrefix} namePrefix={namePrefix} />
+          sectionDescription={sectionDescription}>
+          <ScriptField settingsGroup="scriptsSettings" fieldName={fieldName} />
         </Section>
       ))}
     </>

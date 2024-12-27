@@ -15,9 +15,10 @@ import {
   TabPanel
 } from '@wordpress/components';
 
-import { useSettingsManager } from './hooks/useSettingsManager';
-import ScriptsPanel from './components/settings/scripts/ScriptsPanel';
-import SocialMediaPanel from './components/settings/social/SocialMediaPanel';
+import { useSettingsManager } from 'hooks/useSettingsManager';
+import ScriptsPanel from 'components/settings/scripts/ScriptsPanel';
+import SocialMediaPanel from 'components/settings/social/SocialMediaPanel';
+import CommonPanel from 'components/settings/common/CommonPanel';
 
 const ThemeSettingsPage = () => {
   const { dismissNotice, notice, submitSettings, settings, isFetchingSettings } =
@@ -25,7 +26,7 @@ const ThemeSettingsPage = () => {
 
   // Initialize React Hook Form
   const formMethods = useForm({
-    defaultValues: settings // Set default form values to settings state
+    defaultValues: settings
   });
 
   // Reset form values when the settings are loaded
@@ -41,6 +42,12 @@ const ThemeSettingsPage = () => {
   };
 
   const tabs = [
+    {
+      name: 'commonSettings',
+      title: 'Common',
+      className: 'tab',
+      component: <CommonPanel />
+    },
     {
       name: 'scriptsSettings',
       title: 'Scripts',
@@ -86,8 +93,7 @@ const ThemeSettingsPage = () => {
                 variant="primary"
                 style={{ width: 'fit-content' }}
                 isBusy={formMethods.formState.isSubmitting}
-                disabled={formMethods.formState.isSubmitting}
-              >
+                disabled={formMethods.formState.isSubmitting}>
                 {formMethods.formState.isSubmitting
                   ? __('Saving...', 'timbertail')
                   : __('Save settings', 'timbertail')}

@@ -5,17 +5,17 @@ import { html } from '@codemirror/lang-html';
 import CodeMirror from '@uiw/react-codemirror';
 import { ToggleControl, __experimentalVStack as VStack } from '@wordpress/components';
 
-const ScriptField = ({ namePrefix }) => {
+const ScriptField = ({ settingsGroup, fieldName }) => {
   const { control } = useFormContext();
   return (
     <VStack width="100%" spacing={4}>
       <Controller
-        name={`scriptsSettings.${namePrefix}.content`} // name is used as a key name in the data object; the "." means that's the object
+        name={`${settingsGroup}.${fieldName}.content`} // name is used as a key name in the data object; the "." means that's the object
         control={control}
         render={({ field }) => (
           <CodeMirror
             {...field}
-            placeholder="Place your code here"
+            placeholder={__('Place your code here', 'timbertail')}
             height="300px"
             theme="light"
             options={{
@@ -27,7 +27,7 @@ const ScriptField = ({ namePrefix }) => {
         )}
       />
       <Controller
-        name={`scriptsSettings.${namePrefix}.isActive`} // name is used as a key name in the data object; the "." means that's the object
+        name={`${settingsGroup}.${fieldName}.isActive`} // name is used as a key name in the data object; the "." means that's the object
         control={control}
         render={({ field }) => (
           <ToggleControl
