@@ -28,6 +28,7 @@
   "dependencies": {
     "@codemirror/lang-html": "^6.4.9",
     "@uiw/react-codemirror": "^4.23.7",
+    "@wordpress/api-fetch": "^7.14.0",
     "@wordpress/components": "^29.0.0",
     "react-hook-form": "^7.54.1"
   }
