@@ -58,9 +58,9 @@
 		"pretty": "npx prettier . --write"
 	},
 	"lint-staged": {
-		"src/*.{js,jsx,ts,tsx}": "wp-scripts lint-js",
-		"src/*.{css,scss}": "wp-scripts lint-style",
-		"src/*.{md,mdx}": "wp-scripts lint-md-docs",
-		"src/package.json": "wp-scripts lint-pkg-json"
+		"*.{js,jsx,ts,tsx}": "wp-scripts lint-js",
+		"*.{css,scss}": "wp-scripts lint-style",
+		"*.{md,mdx}": "wp-scripts lint-md-docs",
+		"package.json": "wp-scripts lint-pkg-json"
 	}
 }
