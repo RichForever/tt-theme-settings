@@ -25,14 +25,12 @@ export const useNotice = () => {
 
   // Automatically hide the notice after 4 seconds
   useEffect(() => {
-    if (notice.isVisible) {
-      const timer = setTimeout(() => {
-        dismissNotice();
-      }, 4000);
+    const timer = setTimeout(() => {
+      dismissNotice();
+    }, 4000);
 
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, [notice.isVisible]);
 
-  return { notice, showNotice, dismissNotice };
+  return { notice, setNotice, showNotice, dismissNotice };
 };

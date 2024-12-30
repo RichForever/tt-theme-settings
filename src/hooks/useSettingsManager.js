@@ -3,11 +3,14 @@ import { useEffect, useState } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 
 import { useNotice } from './useNotice';
+import { useSnackbar } from './useSnackbar';
 
 export const useSettingsManager = () => {
-  const { notice, showNotice, dismissNotice } = useNotice();
   const [settings, setSettings] = useState({}); // Use a single object to hold all settings
   const [isFetchingSettings, setIsFetchingSettings] = useState(true); // Track loading state
+
+  const { notice, setNotice, showNotice, dismissNotice } = useNotice();
+  const { snackbar, setSnackbar, showSnackbar } = useSnackbar();
 
   useEffect(() => {
     (async () => {
@@ -38,19 +41,23 @@ export const useSettingsManager = () => {
 
       if (response.ok) {
         showNotice(true, 'success', responseData.message);
-      } else {
-        showNotice(true, 'warning', responseData.message);
-      }
-    } catch (error) {
-      showNotice(true, 'error', 'An unexpected error occurred.');
-    }
+        showSnackbar(true, responseData.message);
+	} else {
+		showNotice(true, 'warning', responseData.message);
+		showSnackbar(true, responseData.message);
+	}
+} catch (error) {
+	showNotice(true, 'error', 'An unexpected error occurred.');
+	showSnackbar(true, error.message);
+	}
   };
 
   return {
+	  notice,
     dismissNotice,
-    notice,
-    submitSettings,
     settings,
-    isFetchingSettings
+    submitSettings,
+    isFetchingSettings,
+    snackbar
   };
 };

@@ -11,18 +11,29 @@ import {
   CardHeader,
   __experimentalHeading as Heading,
   Notice,
+  Snackbar,
   Spinner,
-  TabPanel
+  TabPanel,
+  __experimentalConfirmDialog as ConfirmDialog,
+  __experimentalHStack as HStack
 } from '@wordpress/components';
 
 import { useSettingsManager } from 'hooks/useSettingsManager';
+import { useConfirmDialog } from 'hooks/useConfirmDialog';
 import ScriptsPanel from 'components/settings/scripts/ScriptsPanel';
 import SocialMediaPanel from 'components/settings/social/SocialMediaPanel';
 import CommonPanel from 'components/settings/common/CommonPanel';
+import { defaultSettings } from 'config/defaultSettings';
 
 const ThemeSettingsPage = () => {
-  const { dismissNotice, notice, submitSettings, settings, isFetchingSettings } =
-    useSettingsManager();
+  const {
+    notice,
+    dismissNotice,
+    settings,
+    submitSettings,
+    isFetchingSettings,
+    snackbar
+  } = useSettingsManager();
 
   // Initialize React Hook Form
   const formMethods = useForm({
@@ -40,6 +51,18 @@ const ThemeSettingsPage = () => {
     console.log(data);
     await submitSettings(data);
   };
+
+  const handleResetSettings = () => {
+    submitSettings(defaultSettings);
+    formMethods.reset(defaultSettings);
+  };
+
+  const {
+    isOpen,
+    handleShowDialog,
+    handleConfirm,
+    handleCancel
+  } = useConfirmDialog(handleResetSettings);
 
   const tabs = [
     {
@@ -72,6 +95,18 @@ const ThemeSettingsPage = () => {
         </div>
       )}
 
+      {snackbar.isVisible && <Snackbar>{snackbar.message}</Snackbar>}
+
+      <ConfirmDialog
+        isOpen={isOpen}
+        onConfirm={handleConfirm}
+        onCancel={handleCancel}
+        cancelButtonText={__('No, keep my settings', 'timbertail')}
+        confirmButtonText={__('Yes, reset all', 'timbertail')}
+      >
+        {__('Are you sure you want to reset all settings to their default values?', 'timbertail')}
+      </ConfirmDialog>
+
       <FormProvider {...formMethods}>
         <form onSubmit={formMethods.handleSubmit(handleSubmitForm)}>
           <Card isRounded={false}>
@@ -88,17 +123,23 @@ const ThemeSettingsPage = () => {
               )}
             </CardBody>
             <CardFooter>
-              <Button
-                type="submit"
-                variant="primary"
-                style={{ width: 'fit-content' }}
-                isBusy={formMethods.formState.isSubmitting}
-                disabled={formMethods.formState.isSubmitting}
-              >
-                {formMethods.formState.isSubmitting
-                  ? __('Saving...', 'timbertail')
-                  : __('Save settings', 'timbertail')}
-              </Button>
+              <HStack spacing={4} justify="flex-start">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  isBusy={formMethods.formState.isSubmitting}
+                  disabled={formMethods.formState.isSubmitting}>
+                  {formMethods.formState.isSubmitting
+                    ? __('Saving...', 'timbertail')
+                    : __('Save settings', 'timbertail')}
+                </Button>
+                <Button
+                  variant="tertiary"
+                  onClick={handleShowDialog}
+                  disabled={formMethods.formState.isSubmitting}>
+                  {__('Reset settings', 'timbertail')}
+                </Button>
+              </HStack>
             </CardFooter>
           </Card>
         </form>

@@ -10,7 +10,13 @@ const NumberField = ({ settingsGroup, fieldName }) => {
     <Controller
       name={`${settingsGroup}.${fieldName}`}
       control={control}
-      render={({ field }) => <NumberControl {...field} __next40pxDefaultSize />}
+      render={({ field }) => (
+        <NumberControl
+          {...field}
+          onChange={(value) => field.onChange(parseInt(value, 10) || 0)}
+          __next40pxDefaultSize
+        />
+      )}
     />
   );
 };

@@ -7,87 +7,42 @@ import {
   Button,
   __experimentalVStack as VStack,
   __experimentalHStack as HStack,
-  __experimentalConfirmDialog as ConfirmDialog,
-  SnackbarList
+  __experimentalConfirmDialog as ConfirmDialog
 } from '@wordpress/components';
 
+import { useConfirmDialog } from 'hooks/useConfirmDialog';
 import SocialMediaItem from './SocialMediaItem';
 import Section from 'components/layout/Section';
-import styles from 'styles/SocialMediaPanel.module.scss';
 
 const SocialMediaPanel = () => {
-  const { control, watch } = useFormContext();
+  const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'socialMediaSettings'
   });
   const [lastAddedIndex, setLastAddedIndex] = useState(null);
-  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
-  const [notices, setNotices] = useState([]);
 
   const handleAddNew = () => {
     append({ platform: '', url: '' });
     setLastAddedIndex(fields.length);
   };
 
-  const handleRemoveAllItems = () => {
-    const noticeId = Date.now();
+  const handleRemoveItem = (index) => {
+    remove(index);
+  };
 
+  const handleRemoveAllItems = () => {
     remove();
     setLastAddedIndex(null);
-    setIsConfirmDialogOpen(false);
-
-    setNotices((prev) => [
-      ...prev,
-      {
-        id: noticeId,
-        content: __('Items removed successfully', 'timbertail')
-      }
-    ]);
-
-    setTimeout(() => {
-      setNotices((prev) => prev.filter((notice) => notice.id !== noticeId));
-    }, 1000);
   };
 
-  const handleShowConfirmDialog = () => {
-    setIsConfirmDialogOpen(true);
-  };
-
-  const handleRemoveItem = (index) => {
-    const platform = watch(`socialMediaSettings.${index}.platform`);
-    const noticeId = Date.now();
-
-    remove(index);
-
-    setNotices((prev) => [
-      ...prev,
-      {
-        id: noticeId,
-        content: platform
-          ? __(`"${platform}" item removed successfully`, 'timbertail')
-          : __('Item removed successfully', 'timbertail')
-      }
-    ]);
-
-    setTimeout(() => {
-      setNotices((prev) => prev.filter((notice) => notice.id !== noticeId));
-    }, 1000);
-  };
-
-  const handleConfirm = () => {
-    handleRemoveAllItems();
-  };
-
-  const handleCancel = () => {
-    setIsConfirmDialogOpen(false);
-  };
+  const { isOpen, handleShowDialog, handleConfirm, handleCancel } =
+    useConfirmDialog(handleRemoveAllItems);
 
   return (
     <Section
       sectionTitle={__('Social Media', 'timbertail')}
-      sectionDescription={__('Add your social media platforms', 'timbertail')}
-    >
+      sectionDescription={__('Add your social media platforms', 'timbertail')}>
       <VStack spacing={4}>
         {fields.length === 0 ? (
           <p>
@@ -111,12 +66,11 @@ const SocialMediaPanel = () => {
         )}
 
         <ConfirmDialog
-          isOpen={isConfirmDialogOpen}
+          isOpen={isOpen}
           onConfirm={handleConfirm}
           onCancel={handleCancel}
           cancelButtonText={__('No, thanks', 'timbertail')}
-          confirmButtonText={__('Yes, please!', 'timbertail')}
-        >
+          confirmButtonText={__('Yes, please!', 'timbertail')}>
           {__('Are you sure you want to remove all items?', 'timbertail')}
         </ConfirmDialog>
 
@@ -129,16 +83,12 @@ const SocialMediaPanel = () => {
             <Button
               variant="secondary"
               isDestructive
-              onClick={handleShowConfirmDialog}
-              style={{ width: 'fit-content' }}
-            >
+              onClick={handleShowDialog}
+              style={{ width: 'fit-content' }}>
               {__('Remove all items', 'timbertail')}
             </Button>
           )}
         </HStack>
-        <div className={styles['snackbar-list-container']}>
-          <SnackbarList notices={notices} onRemove={() => {}} />
-        </div>
       </VStack>
     </Section>
   );

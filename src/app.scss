@@ -1,3 +1,10 @@
 .components-tab-panel__tab-content {
   margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.components-snackbar{
+	position: fixed;
+	bottom: 32px;
+	z-index: 100000;
 }
