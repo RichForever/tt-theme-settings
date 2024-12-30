@@ -43,7 +43,6 @@
 		"check-engines": "wp-scripts check-engines",
 		"check-licenses": "wp-scripts check-licenses",
 		"format": "wp-scripts format",
-		"lint": "eslint --ext .js --ignore-path .gitignore .",
 		"lint:css": "wp-scripts lint-style",
 		"lint:css:fix": "wp-scripts lint-style --fix",
 		"lint:js": "wp-scripts lint-js",
@@ -59,21 +58,9 @@
 		"pretty": "npx prettier . --write"
 	},
 	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": [
-			"wp-scripts lint-js",
-			"wp-scripts lint-js --fix"
-		],
-		"*.{css,scss}": [
-			"wp-scripts lint-style",
-			"wp-scripts lint-style --fix"
-		],
-		"*.{md,mdx}": [
-			"wp-scripts lint-md-docs",
-			"wp-scripts lint-md-docs --fix"
-		],
-		"package.json": [
-			"wp-scripts lint-pkg-json",
-			"wp-scripts lint-pkg-json --fix"
-		]
+		"src/*.{js,jsx,ts,tsx}": "wp-scripts lint-js",
+		"src/*.{css,scss}": "wp-scripts lint-style",
+		"src/*.{md,mdx}": "wp-scripts lint-md-docs",
+		"src/package.json": "wp-scripts lint-pkg-json"
 	}
 }
