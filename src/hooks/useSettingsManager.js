@@ -9,8 +9,8 @@ export const useSettingsManager = () => {
   const [settings, setSettings] = useState({}); // Use a single object to hold all settings
   const [isFetchingSettings, setIsFetchingSettings] = useState(true); // Track loading state
 
-  const { notice, setNotice, showNotice, dismissNotice } = useNotice();
-  const { snackbar, setSnackbar, showSnackbar } = useSnackbar();
+  const { notice, showNotice, dismissNotice } = useNotice();
+  const { notices, showSnackbar, onRemove } = useSnackbar();
 
   useEffect(() => {
     (async () => {
@@ -41,14 +41,14 @@ export const useSettingsManager = () => {
 
       if (response.ok) {
         showNotice(true, 'success', responseData.message);
-        showSnackbar(true, responseData.message);
+        showSnackbar(responseData.message);
       } else {
         showNotice(true, 'warning', responseData.message);
-        showSnackbar(true, responseData.message);
+        showSnackbar(responseData.message);
       }
     } catch (error) {
       showNotice(true, 'error', 'An unexpected error occurred.');
-      showSnackbar(true, error.message);
+      showSnackbar(error.message);
     }
   };
 
@@ -58,6 +58,8 @@ export const useSettingsManager = () => {
     settings,
     submitSettings,
     isFetchingSettings,
-    snackbar
+    notices,
+    showSnackbar,
+    onRemove
   };
 };

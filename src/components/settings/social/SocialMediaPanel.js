@@ -2,17 +2,17 @@ import { useState } from 'react';
 
 import { useFieldArray, useFormContext } from 'react-hook-form';
 
-import { __ } from '@wordpress/i18n';
 import {
   Button,
-  __experimentalVStack as VStack,
+  __experimentalConfirmDialog as ConfirmDialog,
   __experimentalHStack as HStack,
-  __experimentalConfirmDialog as ConfirmDialog
+  __experimentalVStack as VStack
 } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
+import Section from 'components/layout/Section';
 import { useConfirmDialog } from 'hooks/useConfirmDialog';
 import SocialMediaItem from './SocialMediaItem';
-import Section from 'components/layout/Section';
 
 const SocialMediaPanel = () => {
   const { control } = useFormContext();

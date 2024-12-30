@@ -27,7 +27,7 @@ export const useNotice = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       dismissNotice();
-    }, 4000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [notice.isVisible]);

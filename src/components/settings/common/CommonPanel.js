@@ -1,8 +1,8 @@
 import { __ } from '@wordpress/i18n';
 
 import Section from 'components/layout/Section';
-import ToggleField from './ToggleField';
 import NumberField from './NumberField';
+import ToggleField from './ToggleField';
 
 const CommonPanel = () => {
   const sections = [

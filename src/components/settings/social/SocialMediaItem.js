@@ -1,7 +1,7 @@
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { __ } from '@wordpress/i18n';
 import { Button, Panel, PanelBody, PanelRow, TextControl } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 import styles from 'styles/SocialMediaPanel.module.scss';
 

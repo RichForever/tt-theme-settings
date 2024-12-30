@@ -1,28 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const useSnackbar = () => {
-  const [snackbar, setSnackbar] = useState({
-    isVisible: false,
-    message: ''
-  });
+  const [notices, setNotices] = useState([]);
 
-  const showSnackbar = (isVisible, message) => {
-    setSnackbar({
-      isVisible: isVisible,
-      message: message
-    });
+  const showSnackbar = (content) => {
+    const notice = {
+      id: Date.now().toString(),
+      content,
+      spokenMessage: content
+    };
+
+    setNotices((prevNotices) => [...prevNotices, notice]);
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSnackbar({
-        isVisible: false,
-        message: ''
-      });
-    }, 2000);
+  const onRemove = (id) => {
+    setNotices((prevNotices) => prevNotices.filter((notice) => notice.id !== id));
+  };
 
-    return () => clearTimeout(timer);
-  }, [snackbar]);
-
-  return { snackbar, setSnackbar, showSnackbar };
+  return {
+    notices,
+    showSnackbar,
+    onRemove
+  };
 };

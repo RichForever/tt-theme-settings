@@ -1,9 +1,9 @@
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { __ } from '@wordpress/i18n';
 import { html } from '@codemirror/lang-html';
 import CodeMirror from '@uiw/react-codemirror';
 import { ToggleControl, __experimentalVStack as VStack } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 const ScriptField = ({ settingsGroup, fieldName }) => {
   const { control } = useFormContext();

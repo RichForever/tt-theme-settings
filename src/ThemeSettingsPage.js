@@ -2,32 +2,40 @@ import { useEffect } from 'react';
 
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { __ } from '@wordpress/i18n';
 import {
   Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  __experimentalHeading as Heading,
-  Notice,
-  Snackbar,
-  Spinner,
-  TabPanel,
   __experimentalConfirmDialog as ConfirmDialog,
-  __experimentalHStack as HStack
+  __experimentalHeading as Heading,
+  __experimentalHStack as HStack,
+  Notice,
+  SnackbarList,
+  Spinner,
+  TabPanel
 } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
-import { useSettingsManager } from 'hooks/useSettingsManager';
-import { useConfirmDialog } from 'hooks/useConfirmDialog';
+import CommonPanel from 'components/settings/common/CommonPanel';
 import ScriptsPanel from 'components/settings/scripts/ScriptsPanel';
 import SocialMediaPanel from 'components/settings/social/SocialMediaPanel';
-import CommonPanel from 'components/settings/common/CommonPanel';
 import { defaultSettings } from 'config/defaultSettings';
+import { useConfirmDialog } from 'hooks/useConfirmDialog';
+import { useSettingsManager } from 'hooks/useSettingsManager';
 
 const ThemeSettingsPage = () => {
-  const { notice, dismissNotice, settings, submitSettings, isFetchingSettings, snackbar } =
-    useSettingsManager();
+  const {
+    notice,
+    dismissNotice,
+    settings,
+    submitSettings,
+    isFetchingSettings,
+    notices,
+    showSnackbar,
+    onRemove
+  } = useSettingsManager();
 
   // Initialize React Hook Form
   const formMethods = useForm({
@@ -49,6 +57,7 @@ const ThemeSettingsPage = () => {
   const handleResetSettings = () => {
     submitSettings(defaultSettings);
     formMethods.reset(defaultSettings);
+    showSnackbar('Settings have been successfully reset to their default values.');
   };
 
   const { isOpen, handleShowDialog, handleConfirm, handleCancel } =
@@ -85,15 +94,14 @@ const ThemeSettingsPage = () => {
         </div>
       )}
 
-      {snackbar.isVisible && <Snackbar>{snackbar.message}</Snackbar>}
+      {notices.length > 0 && <SnackbarList notices={notices} onRemove={onRemove} />}
 
       <ConfirmDialog
         isOpen={isOpen}
         onConfirm={handleConfirm}
         onCancel={handleCancel}
         cancelButtonText={__('No, keep my settings', 'timbertail')}
-        confirmButtonText={__('Yes, reset all', 'timbertail')}
-      >
+        confirmButtonText={__('Yes, reset all', 'timbertail')}>
         {__('Are you sure you want to reset all settings to their default values?', 'timbertail')}
       </ConfirmDialog>
 
@@ -118,17 +126,16 @@ const ThemeSettingsPage = () => {
                   type="submit"
                   variant="primary"
                   isBusy={formMethods.formState.isSubmitting}
-                  disabled={formMethods.formState.isSubmitting}
-                >
+                  disabled={formMethods.formState.isSubmitting}>
                   {formMethods.formState.isSubmitting
                     ? __('Saving...', 'timbertail')
                     : __('Save settings', 'timbertail')}
                 </Button>
                 <Button
                   variant="tertiary"
+                  isDestructive
                   onClick={handleShowDialog}
-                  disabled={formMethods.formState.isSubmitting}
-                >
+                  disabled={formMethods.formState.isSubmitting}>
                   {__('Reset settings', 'timbertail')}
                 </Button>
               </HStack>
