@@ -26,14 +26,8 @@ import CommonPanel from 'components/settings/common/CommonPanel';
 import { defaultSettings } from 'config/defaultSettings';
 
 const ThemeSettingsPage = () => {
-  const {
-    notice,
-    dismissNotice,
-    settings,
-    submitSettings,
-    isFetchingSettings,
-    snackbar
-  } = useSettingsManager();
+  const { notice, dismissNotice, settings, submitSettings, isFetchingSettings, snackbar } =
+    useSettingsManager();
 
   // Initialize React Hook Form
   const formMethods = useForm({
@@ -57,12 +51,8 @@ const ThemeSettingsPage = () => {
     formMethods.reset(defaultSettings);
   };
 
-  const {
-    isOpen,
-    handleShowDialog,
-    handleConfirm,
-    handleCancel
-  } = useConfirmDialog(handleResetSettings);
+  const { isOpen, handleShowDialog, handleConfirm, handleCancel } =
+    useConfirmDialog(handleResetSettings);
 
   const tabs = [
     {
@@ -128,7 +118,8 @@ const ThemeSettingsPage = () => {
                   type="submit"
                   variant="primary"
                   isBusy={formMethods.formState.isSubmitting}
-                  disabled={formMethods.formState.isSubmitting}>
+                  disabled={formMethods.formState.isSubmitting}
+                >
                   {formMethods.formState.isSubmitting
                     ? __('Saving...', 'timbertail')
                     : __('Save settings', 'timbertail')}
@@ -136,7 +127,8 @@ const ThemeSettingsPage = () => {
                 <Button
                   variant="tertiary"
                   onClick={handleShowDialog}
-                  disabled={formMethods.formState.isSubmitting}>
+                  disabled={formMethods.formState.isSubmitting}
+                >
                   {__('Reset settings', 'timbertail')}
                 </Button>
               </HStack>
