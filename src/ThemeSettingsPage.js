@@ -101,8 +101,7 @@ const ThemeSettingsPage = () => {
         onConfirm={handleConfirm}
         onCancel={handleCancel}
         cancelButtonText={__('No, keep my settings', 'timbertail')}
-        confirmButtonText={__('Yes, reset all', 'timbertail')}
-      >
+        confirmButtonText={__('Yes, reset all', 'timbertail')}>
         {__('Are you sure you want to reset all settings to their default values?', 'timbertail')}
       </ConfirmDialog>
 
@@ -127,8 +126,7 @@ const ThemeSettingsPage = () => {
                   type="submit"
                   variant="primary"
                   isBusy={formMethods.formState.isSubmitting}
-                  disabled={formMethods.formState.isSubmitting}
-                >
+                  disabled={formMethods.formState.isSubmitting}>
                   {formMethods.formState.isSubmitting
                     ? __('Saving...', 'timbertail')
                     : __('Save settings', 'timbertail')}
@@ -137,8 +135,7 @@ const ThemeSettingsPage = () => {
                   variant="tertiary"
                   isDestructive
                   onClick={handleShowDialog}
-                  disabled={formMethods.formState.isSubmitting}
-                >
+                  disabled={formMethods.formState.isSubmitting}>
                   {__('Reset settings', 'timbertail')}
                 </Button>
               </HStack>

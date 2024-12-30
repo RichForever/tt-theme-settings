@@ -28,8 +28,7 @@ const ScriptsPanel = () => {
         <Section
           key={fieldName}
           sectionTitle={sectionTitle}
-          sectionDescription={sectionDescription}
-        >
+          sectionDescription={sectionDescription}>
           <ScriptField settingsGroup="scriptsSettings" fieldName={fieldName} />
         </Section>
       ))}

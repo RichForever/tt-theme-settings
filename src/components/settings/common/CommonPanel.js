@@ -3,6 +3,7 @@ import { __ } from '@wordpress/i18n';
 import Section from 'components/layout/Section';
 import NumberField from './NumberField';
 import ToggleField from './ToggleField';
+import TokenField from './TokenField';
 
 const CommonPanel = () => {
   const sections = [
@@ -14,6 +15,15 @@ const CommonPanel = () => {
         'timbertail'
       ),
       component: NumberField
+    },
+    {
+      fieldName: 'customBodyClasses',
+      sectionTitle: __('Custom CSS classes for body tag', 'timbertail'),
+      sectionDescription: __(
+        'Add one or multiple custom CSS classes for the body tag.',
+        'timbertail'
+      ),
+      component: TokenField
     },
     {
       fieldName: 'disableWordpressVersion',
@@ -58,8 +68,7 @@ const CommonPanel = () => {
         <Section
           key={fieldName}
           sectionTitle={sectionTitle}
-          sectionDescription={sectionDescription}
-        >
+          sectionDescription={sectionDescription}>
           <Component settingsGroup="commonSettings" fieldName={fieldName} />
         </Section>
       ))}

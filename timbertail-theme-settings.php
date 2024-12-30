@@ -40,7 +40,8 @@ add_action( 'plugins_loaded', 'tt_theme_settings_init' );
 function tt_theme_settings_activate() {
     $default_settings = [
         'commonSettings' => [
-            'excerptLength' => 55,  // Default WordPress excerpt length as number
+            'excerptLength' => 55,
+            'customBodyClasses' => [],
             'disableWordpressVersion' => false,
             'addSvgSupport' => false,
             'disableXmlRpc' => false,

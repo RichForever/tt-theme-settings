@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class TT_Scripts_Handler {
+class TT_Scripts_Settings_Handler {
 
 	public function __construct() {
 		add_action( 'wp_head', [ $this, 'output_head_scripts' ] );

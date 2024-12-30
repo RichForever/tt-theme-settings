@@ -13,11 +13,12 @@ class TT_Common_Settings_Handler {
 		add_filter( 'xmlrpc_enabled', [ $this, 'handle_disable_xml_rpc' ] );
 		add_filter( 'show_admin_bar', [ $this, 'handle_admin_bar_visibility' ] );
 		add_filter( 'init', [ $this, 'handle_disable_file_edit' ] );
+		add_filter( 'body_class', [ $this, 'handle_custom_body_classes' ] );
 	}
 
 	public function handle_excerpt_length($length) {
 		$setting = TT_Settings::get_setting('commonSettings.excerptLength', 55);
-		return (int)$setting;
+		return $setting;
 	}
 
 	public function handle_remove_wp_version() {
@@ -55,4 +56,8 @@ class TT_Common_Settings_Handler {
 		}
 	}
 
+	public function handle_custom_body_classes($classes) {
+		$setting = TT_Settings::get_setting('commonSettings.customBodyClasses', []);
+		return empty($setting) ? $classes : array_merge($classes, array_filter($setting));
+	}
 }

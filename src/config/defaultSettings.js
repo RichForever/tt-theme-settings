@@ -1,6 +1,7 @@
 export const defaultSettings = {
   commonSettings: {
     excerptLength: 55,
+    customBodyClasses: [],
     disableWordpressVersion: false,
     addSvgSupport: false,
     disableXmlRpc: false,

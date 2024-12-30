@@ -79,8 +79,7 @@ const SocialMediaItem = ({ index, settingsGroup, handleRemove, isNew }) => {
               variant="primary"
               isDestructive
               onClick={handleRemove}
-              style={{ width: 'fit-content' }}
-            >
+              style={{ width: 'fit-content' }}>
               {__('Remove item', 'timbertail')}
             </Button>
           </PanelRow>
