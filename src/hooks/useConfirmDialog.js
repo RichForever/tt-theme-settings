@@ -1,25 +1,25 @@
-import { useState } from 'react';
+import { useState } from '@wordpress/element';
 
 export const useConfirmDialog = (onConfirmCallback) => {
-  const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
-  const handleShowDialog = () => {
-    setIsOpen(true);
-  };
+	const handleShowDialog = () => {
+		setIsOpen(true);
+	};
 
-  const handleConfirm = () => {
-    onConfirmCallback();
-    setIsOpen(false);
-  };
+	const handleConfirm = () => {
+		onConfirmCallback();
+		setIsOpen(false);
+	};
 
-  const handleCancel = () => {
-    setIsOpen(false);
-  };
+	const handleCancel = () => {
+		setIsOpen(false);
+	};
 
-  return {
-    isOpen,
-    handleShowDialog,
-    handleConfirm,
-    handleCancel
-  };
+	return {
+		isOpen,
+		handleShowDialog,
+		handleConfirm,
+		handleCancel,
+	};
 };

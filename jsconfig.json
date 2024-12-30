@@ -1,17 +1,17 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-	"jsx": "react-jsx",
-    "checkJs": true,
-    "baseUrl": ".",
-    "paths": {
-      "styles/*": ["src/styles/*"],
-      "components/*": ["src/components/*"],
-      "hooks/*": ["src/hooks/*"],
-      "config/*": ["src/config/*"],
-    }
-  },
-  "include": ["src/**/*", "@types/**/*"],
-  "exclude": ["node_modules", "build"]
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"jsx": "react-jsx",
+		"checkJs": true,
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["src/*"],
+			"@styles/*": ["src/styles/*"],
+			"@components/*": ["src/components/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@config/*": ["src/config/*"]
+		}
+	},
+	"exclude": ["node_modules", "build"]
 }

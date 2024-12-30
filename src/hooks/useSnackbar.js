@@ -1,25 +1,27 @@
-import { useState } from 'react';
+import { useState } from '@wordpress/element';
 
 export const useSnackbar = () => {
-  const [notices, setNotices] = useState([]);
+	const [notices, setNotices] = useState([]);
 
-  const showSnackbar = (content) => {
-    const notice = {
-      id: Date.now().toString(),
-      content,
-      spokenMessage: content
-    };
+	const showSnackbar = (content) => {
+		const notice = {
+			id: Date.now().toString(),
+			content,
+			spokenMessage: content,
+		};
 
-    setNotices((prevNotices) => [...prevNotices, notice]);
-  };
+		setNotices((prevNotices) => [...prevNotices, notice]);
+	};
 
-  const onRemove = (id) => {
-    setNotices((prevNotices) => prevNotices.filter((notice) => notice.id !== id));
-  };
+	const onRemove = (id) => {
+		setNotices((prevNotices) =>
+			prevNotices.filter((notice) => notice.id !== id)
+		);
+	};
 
-  return {
-    notices,
-    showSnackbar,
-    onRemove
-  };
+	return {
+		notices,
+		showSnackbar,
+		onRemove,
+	};
 };
