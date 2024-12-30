@@ -59,7 +59,7 @@
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx}": "wp-scripts lint-js",
-		"*.{css,scss}": "wp-scripts lint-style",
+		"*.{css,scss}": "wp-scripts lint-style --allow-empty-input",
 		"*.{md,mdx}": "wp-scripts lint-md-docs",
 		"package.json": "wp-scripts lint-pkg-json"
 	}
