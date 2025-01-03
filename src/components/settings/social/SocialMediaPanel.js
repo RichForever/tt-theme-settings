@@ -7,6 +7,8 @@ import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalConfirmDialog as ConfirmDialog,
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalHeading as Heading,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalHStack as HStack,
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalVStack as VStack,
@@ -79,10 +81,13 @@ const SocialMediaPanel = () => {
 					cancelButtonText={__('No, thanks', 'timbertail')}
 					confirmButtonText={__('Yes, please!', 'timbertail')}
 				>
-					{__(
-						'Are you sure you want to remove all items?',
-						'timbertail'
-					)}
+					<Heading level={4}>{__('Confirm', 'timbertail')}</Heading>
+					<p>
+						{__(
+							'Are you sure you want to remove all items?',
+							'timbertail'
+						)}
+					</p>
 				</ConfirmDialog>
 
 				<HStack justify="flex-start">

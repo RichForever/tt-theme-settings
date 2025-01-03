@@ -110,10 +110,13 @@ const ThemeSettingsPage = () => {
 				cancelButtonText={__('No, keep my settings', 'timbertail')}
 				confirmButtonText={__('Yes, reset all', 'timbertail')}
 			>
-				{__(
-					'Are you sure you want to reset all settings to their default values?',
-					'timbertail'
-				)}
+				<Heading level={4}>{__('Confirm', 'timbertail')}</Heading>
+				<p>
+					{__(
+						'Are you sure you want to reset all settings to their default values?',
+						'timbertail'
+					)}
+				</p>
 			</ConfirmDialog>
 
 			<FormProvider {...formMethods}>
