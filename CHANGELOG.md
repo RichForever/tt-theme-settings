@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.1](https://github.com/RichForever/tt-theme-settings/compare/1.1.0...1.1.1) (2025-02-20)
+
+### Bug Fixes
+
+* husky commands and core.hookPaths ([f1abbb9](https://github.com/RichForever/tt-theme-settings/commit/f1abbb915fdd94185b26fc5f8acef8472c8aeff6))
+
 ## 1.1.0 (2025-02-20)
 
 ### Features
