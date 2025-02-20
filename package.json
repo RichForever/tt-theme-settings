@@ -1,66 +1,98 @@
 {
-	"name": "timbertail-theme-settings",
-	"version": "1.0.0",
-	"description": "",
-	"author": "",
-	"license": "GPL-2.0-or-later",
-	"keywords": [
-		"wordpress",
-		"theme",
-		"settings",
-		"react",
-		"hook-form"
-	],
-	"homepage": "",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/RichForever/tt-theme-settings"
-	},
-	"bugs": {
-		"url": "https://github.com/RichForever/tt-theme-settings/issues"
-	},
-	"main": "index.js",
-	"dependencies": {
-		"@codemirror/lang-html": "^6.4.9",
-		"@uiw/react-codemirror": "^4.23.7",
-		"@wordpress/api-fetch": "^7.14.0",
-		"@wordpress/components": "^29.0.0",
-		"@wordpress/element": "^6.14.0",
-		"react-hook-form": "^7.54.1"
-	},
-	"devDependencies": {
-		"@wordpress/eslint-plugin": "^17.7.0",
-		"@wordpress/prettier-config": "^4.14.0",
-		"@wordpress/scripts": "^30.6.0",
-		"eslint-import-resolver-webpack": "^0.13.10",
-		"eslint-plugin-import": "^2.29.1",
-		"husky": "^9.1.7",
-		"lint-staged": "^15.2.11",
-		"prettier": "3.4.2"
-	},
-	"scripts": {
-		"build": "wp-scripts build",
-		"check-engines": "wp-scripts check-engines",
-		"check-licenses": "wp-scripts check-licenses",
-		"format": "wp-scripts format",
-		"lint:css": "wp-scripts lint-style",
-		"lint:css:fix": "wp-scripts lint-style --fix",
-		"lint:js": "wp-scripts lint-js",
-		"lint:js:fix": "wp-scripts lint-js --fix",
-		"lint:md:docs": "wp-scripts lint-md-docs",
-		"lint:md:docs:fix": "wp-scripts lint-md-docs --fix",
-		"lint:pkg-json": "wp-scripts lint-pkg-json",
-		"lint:pkg-json:fix": "wp-scripts lint-pkg-json --fix",
-		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start",
-		"prepare": "husky",
-		"pretty": "npx prettier . --write"
-	},
-	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": "wp-scripts lint-js",
-		"*.{css,scss}": "wp-scripts lint-style --allow-empty-input",
-		"*.{md,mdx}": "wp-scripts lint-md-docs",
-		"package.json": "wp-scripts lint-pkg-json"
-	}
+  "name": "timbertail-theme-settings",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress",
+    "theme",
+    "settings",
+    "react",
+    "hook-form"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RichForever/tt-theme-settings"
+  },
+  "bugs": {
+    "url": "https://github.com/RichForever/tt-theme-settings/issues"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@codemirror/lang-html": "^6.4.9",
+    "@uiw/react-codemirror": "^4.23.7",
+    "@wordpress/api-fetch": "^7.14.0",
+    "@wordpress/components": "^29.0.0",
+    "@wordpress/element": "^6.14.0",
+    "react-hook-form": "^7.54.1"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^10.0.0",
+    "@wordpress/eslint-plugin": "^17.7.0",
+    "@wordpress/prettier-config": "^4.14.0",
+    "@wordpress/scripts": "^30.6.0",
+    "eslint-import-resolver-webpack": "^0.13.10",
+    "eslint-plugin-import": "^2.29.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
+    "prettier": "3.4.2",
+    "release-it": "^18.1.2"
+  },
+  "scripts": {
+    "build": "wp-scripts build",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:css:fix": "wp-scripts lint-style --fix",
+    "lint:js": "wp-scripts lint-js",
+    "lint:js:fix": "wp-scripts lint-js --fix",
+    "lint:md:docs": "wp-scripts lint-md-docs",
+    "lint:md:docs:fix": "wp-scripts lint-md-docs --fix",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "lint:pkg-json:fix": "wp-scripts lint-pkg-json --fix",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "start": "wp-scripts start",
+    "prepare": "husky",
+    "pretty": "npx prettier . --write",
+    "release": "release-it"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "wp-scripts lint-js",
+    "*.{css,scss}": "wp-scripts lint-style --allow-empty-input",
+    "*.{md,mdx}": "wp-scripts lint-md-docs",
+    "package.json": "wp-scripts lint-pkg-json"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "preset": {
+          "name": "conventionalcommits",
+          "type": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            }
+          ]
+        }
+      }
+    }
+  }
 }
