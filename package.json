@@ -94,11 +94,6 @@
             {
               "type": "fix",
               "section": "Bug Fixes"
-            },
-            {
-              "type": "build",
-              "section": "Builds",
-              "hidden": false
             }
           ]
         }
