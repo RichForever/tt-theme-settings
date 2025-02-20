@@ -1,5 +1,7 @@
 # Changelog
 
+* build: test2 (8d7cd66)
+
 ## [1.1.3](https://github.com/RichForever/tt-theme-settings/compare/1.1.2...1.1.3) (2025-02-20)
 
 ## [1.1.2](https://github.com/RichForever/tt-theme-settings/compare/1.1.1...1.1.2) (2025-02-20)
