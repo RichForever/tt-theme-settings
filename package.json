@@ -97,7 +97,8 @@
             },
             {
               "type": "build",
-              "section": "Builds"
+              "section": "Builds",
+              "hidden": "false"
             }
           ]
         }
