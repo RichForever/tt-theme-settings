@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.4](https://github.com/RichForever/tt-theme-settings/compare/1.1.3...1.1.4) (2025-02-21)
+
+### 📝 Documentation
+
+* **changelog.md:** use asterisk in list ([aa0807b](https://github.com/RichForever/tt-theme-settings/commit/aa0807bb5bc4e1892bd43f3ab973d8c5285e1fbb))
+
 ## [1.1.3](https://github.com/RichForever/tt-theme-settings/compare/1.1.2...1.1.3) (2025-02-21)
 
 ### 📝 Documentation
