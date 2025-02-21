@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.2](https://github.com/RichForever/tt-theme-settings/compare/1.1.1...1.1.2) (2025-02-21)
+
+### 🐛 Bug Fixes
+
+* **package.json:** remove unused scripts ([b878f64](https://github.com/RichForever/tt-theme-settings/commit/b878f648c0c426b548d7c7de959b6f792a04780a))
+
 ## [1.1.1](https://github.com/RichForever/tt-theme-settings/compare/1.1.0...1.1.1) (2025-02-21)
 
 ### 🏗 Build System
