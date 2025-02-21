@@ -22,4 +22,4 @@
 
 ### 🚀 Features
 
-- Initial commit
+* Initial commit
