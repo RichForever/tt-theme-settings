@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.3](https://github.com/RichForever/tt-theme-settings/compare/1.1.2...1.1.3) (2025-02-21)
+
+### 📝 Documentation
+
+* **changelog.md:** update changelog ([797a666](https://github.com/RichForever/tt-theme-settings/commit/797a6669c83e249b94318aadd27fe252bff47b15))
+
 ## [1.1.2](https://github.com/RichForever/tt-theme-settings/compare/1.1.1...1.1.2) (2025-02-21)
 
 ### 🐛 Bug Fixes
