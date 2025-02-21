@@ -36,6 +36,7 @@
     "@wordpress/prettier-config": "^4.14.0",
     "@wordpress/scripts": "^30.6.0",
     "commitizen": "^4.3.1",
+    "conventional-changelog-cli": "^5.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint-import-resolver-webpack": "^0.13.10",
     "eslint-plugin-import": "^2.29.1",
@@ -43,6 +44,9 @@
     "lint-staged": "^15.2.11",
     "prettier": "3.4.2",
     "release-it": "^18.1.2"
+  },
+  "overrides": {
+    "conventional-changelog-conventionalcommits": "8.0.0"
   },
   "scripts": {
     "build": "wp-scripts build",
@@ -86,14 +90,61 @@
         "infile": "CHANGELOG.md",
         "preset": {
           "name": "conventionalcommits",
-          "type": [
+          "types": [
             {
               "type": "feat",
-              "section": "Features"
+              "section": "🚀 Features",
+              "hidden": false
             },
             {
               "type": "fix",
-              "section": "Bug Fixes"
+              "section": "🐛 Bug Fixes",
+              "hidden": false
+            },
+            {
+              "type": "docs",
+              "section": "📝 Documentation",
+              "hidden": false
+            },
+            {
+              "type": "style",
+              "section": "💄 Code Style",
+              "hidden": false
+            },
+            {
+              "type": "refactor",
+              "section": "♻️ Refactoring",
+              "hidden": false
+            },
+            {
+              "type": "perf",
+              "section": "⚡ Performance Improvements",
+              "hidden": false
+            },
+            {
+              "type": "test",
+              "section": "🧪 Tests",
+              "hidden": false
+            },
+            {
+              "type": "build",
+              "section": "🏗 Build System",
+              "hidden": false
+            },
+            {
+              "type": "ci",
+              "section": "🔧 Continuous Integration",
+              "hidden": false
+            },
+            {
+              "type": "chore",
+              "section": "📦 Miscellaneous",
+              "hidden": false
+            },
+            {
+              "type": "revert",
+              "section": "⏪ Reversions",
+              "hidden": false
             }
           ]
         }
