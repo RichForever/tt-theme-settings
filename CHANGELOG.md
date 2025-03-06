@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.7](https://github.com/RichForever/tt-theme-settings/compare/1.1.6...1.1.7) (2025-03-06)
+
+### 📦 Miscellaneous
+
+* update plugin description ([3721f9a](https://github.com/RichForever/tt-theme-settings/commit/3721f9ad9f44827e7e36aab3ae08e5740cb0deef))
+
 ## [1.1.6](https://github.com/RichForever/tt-theme-settings/compare/1.1.5...1.1.6) (2025-03-06)
 
 ### 📦 Miscellaneous
