@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: TimberTail Theme Settings
- * Description: An example options page built with React.
+ * Plugin Name:       TimberTail Theme Settings
+ * Description:       This plugin provides a customizable theme settings page, built with React.
  * Version:           1.1.6
  * Author:            MM
  */
