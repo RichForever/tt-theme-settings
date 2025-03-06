@@ -31,6 +31,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
+    "@release-it/bumper": "^7.0.1",
     "@release-it/conventional-changelog": "^10.0.0",
     "@wordpress/eslint-plugin": "^17.7.0",
     "@wordpress/prettier-config": "^4.14.0",
@@ -81,6 +82,11 @@
       "publish": false
     },
     "plugins": {
+      "@release-it/bumper": {
+        "in": "timbertail-theme-settings.php",
+        "out": "timbertail-theme-settings.php",
+        "regex": "Version:\\s*([\\d.]+)"
+      },
       "@release-it/conventional-changelog": {
         "infile": "CHANGELOG.md",
         "preset": {
