@@ -83,8 +83,8 @@
     },
     "plugins": {
       "@release-it/bumper": {
-        "in": "timbertail-theme-settings.php",
-        "out": "timbertail-theme-settings.php",
+        "in": "tt-theme-settings.php",
+        "out": "tt-theme-settings.php",
         "regex": "Version:\\s*([\\d.]+)"
       },
       "@release-it/conventional-changelog": {
