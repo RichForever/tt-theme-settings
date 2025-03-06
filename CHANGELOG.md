@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.5](https://github.com/RichForever/tt-theme-settings/compare/1.1.4...1.1.5) (2025-03-06)
+
+### 📦 Miscellaneous
+
+* add script to update plugin version ([b10ac83](https://github.com/RichForever/tt-theme-settings/commit/b10ac831f84c2823cf98cfbb4ff8827ff64aa19d))
+
 ## [1.1.4](https://github.com/RichForever/tt-theme-settings/compare/1.1.3...1.1.4) (2025-02-21)
 
 ### 📝 Documentation
