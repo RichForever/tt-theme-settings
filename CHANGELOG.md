@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.6](https://github.com/RichForever/tt-theme-settings/compare/1.1.5...1.1.6) (2025-03-06)
+
+### 📦 Miscellaneous
+
+* refactor comments ([4a5b7e5](https://github.com/RichForever/tt-theme-settings/commit/4a5b7e5e28aba6b0ff04aaa70fb1e194cfbb0c9d))
+
 ## [1.1.5](https://github.com/RichForever/tt-theme-settings/compare/1.1.4...1.1.5) (2025-03-06)
 
 ### 📦 Miscellaneous

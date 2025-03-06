@@ -2,7 +2,7 @@
 /**
  * Plugin Name: TimberTail Theme Settings
  * Description: An example options page built with React.
- * Version:           1.1.5
+ * Version:           1.1.6
  * Author:            MM
  */
 
